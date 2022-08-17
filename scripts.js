@@ -2,12 +2,14 @@
 
 const container = document.querySelector('#container');
 
-function createGrid () {
-    for(let i = 0; i < 16; i++) {
-        const grid = document.createElement('div');
-        grid.classList.add('grid');
-        container.appendChild(grid);
-    }
-}
+const grid = document.createElement('div');
+grid.classList.add('grid');
+container.appendChild(grid);
 
-createGrid();
+const col = document.createElement('div');
+grid.appendChild(col);
+
+let pixel = document.createElement('div');
+pixel.classList.add('pixel');
+col.appendChild(pixel);
+
