@@ -1,0 +1,12 @@
+#container {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    height: 20px;
+    width: 20px;
+    border: solid black;
+}
