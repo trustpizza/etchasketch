@@ -7,19 +7,33 @@ let columnLength = 16;
 let pixelCount = columnLength * columnLength;
 let pixelSize = gridSize / columnLength;
 
+const button = document.createElement('button');
+button.innerHTML = 'Click Me!';
+button.addEventListener('click', () => {
+    columnLength = prompt('Choose desired column length');
+    pixelCount = columnLength * columnLength;
+    pixelSize = gridSize / columnLength;
+    createGrid(gridSize, columnLength, pixelSize)
+})
+container.appendChild(button);
 
-const grid = document.createElement('div');
-grid.style.cssText = `display: grid; height: ${gridSize}px; width: ${gridSize}px; grid-template-columns: repeat(${columnLength}, ${pixelSize}px [col-start]);`;
-container.appendChild(grid);
-for (let i = 0; i < pixelCount; i++) {
-    const pixel = document.createElement('div');
-    pixel.style.cssText = `border: 1px solid black; height: ${pixelSize}px; width: ${pixelSize}px; padding: 0px;`
-    pixel.addEventListener('mouseover', () => {
-        pixel.style.backgroundColor = 'black'
-    });
-    pixel.addEventListener('mouseout', () => {
+function createGrid(gridSize, columnLength, pixelSize) {
+    const grid = document.createElement('div');
+    grid.style.cssText = `display: grid; height: ${gridSize}px; width: ${gridSize}px; grid-template-columns: repeat(${columnLength}, ${pixelSize}px [col-start]);`;
+    container.appendChild(grid);
+    for (let i = 0; i < pixelCount; i++) {
+        const pixel = document.createElement('div');
         pixel.style.cssText = `border: 1px solid black; height: ${pixelSize}px; width: ${pixelSize}px; padding: 0px;`
-    });
-    grid.appendChild(pixel);
+        pixel.addEventListener('mouseover', () => {
+            pixel.style.backgroundColor = 'black'
+        });
+        pixel.addEventListener('mouseout', () => {
+            pixel.style.cssText = `border: 1px solid black; height: ${pixelSize}px; width: ${pixelSize}px; padding: 0px;`
+        });
+        grid.appendChild(pixel);
+    }
+    
 }
+
+createGrid(gridSize, columnLength, pixelSize);
 
